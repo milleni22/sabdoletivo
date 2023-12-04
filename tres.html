@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> caixa de texto</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #toggleBotao {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #2ecc71;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    #toggleBotao:hover {
+      background-color: #27ae60;
+    }
+
+    #caixaDeTexto {
+      display: none;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="toggleBotao">mostrar ou esconder texto</button>
+  <div id="caixaDeTexto">nota dez!</div>
+
+  <script>
+    $(document).ready(function() {
+      $('#toggleBotao').click(function() {
+        $('#caixaDeTexto').fadeToggle();
+      });
+    });
+  </script>
+
+</body>
+</html>

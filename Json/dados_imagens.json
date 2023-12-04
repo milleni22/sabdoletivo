@@ -1,0 +1,7 @@
+{
+  "imagens":[
+    { "url": "imagem1.jpg", "descricao": "Imagem 1" },
+    { "url": "imagem2.jpg", "descricao": "Imagem 2" },
+    { "url": "imagem3.jpg", "descricao": "Imagem 3" }
+  ]
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Pessoas</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #pessoasLista {
+      list-style: none;
+      padding: 0;
+    }
+
+    .pessoa {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Lista de Pessoas</h2>
+  <ul id="pessoasLista"></ul>
+
+  <script>
+    function fetchData(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+          callback(data);
+        }
+      };
+      xhr.open('GET', url, true);
+      xhr.send();
+    }
+
+    fetchData('dados_pessoas.json', function(dados) {
+      dados.usuarios.forEach(function(pessoa) {
+        var listItem = document.createElement('li');
+        listItem.className = 'pessoa';
+        listItem.textContent = 'Nome: ' + pessoa.nome + ', Idade: ' + pessoa.idade;
+        document.getElementById('pessoasLista').appendChild(listItem);
+      });
+    });
+  </script>
+
+</body>
+</html>

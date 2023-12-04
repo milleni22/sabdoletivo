@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Imagens</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #galeria {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .imagem {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Galeria de Imagens</h2>
+  <div id="galeria"></div>
+
+  <script>
+    function fetchData(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+          callback(data);
+        }
+      };
+      xhr.open('GET', url, true);
+      xhr.send();
+    }
+
+    fetchData('dados_imagens.json', function(dados) {
+      dados.imagens.forEach(function(imagem) {
+        var imageContainer = document.createElement('div');
+        imageContainer.className = 'imagem';
+        imageContainer.innerHTML = '<img src="' + imagem.url + '" alt="' + imagem.descricao + '"><p>' + imagem.descricao + '</p>';
+        document.getElementById('galeria').appendChild(imageContainer);
+      });
+    });
+  </script>
+
+</body>
+</html>
